@@ -77,17 +77,17 @@ source ~/ros2_ws/install/setup.bash
 Spawn the custom differential drive robot inside the simulated maze environment:
 
 ```bash
-ros2 launch diff_robot sim_launch.py
+ros2 launch diff_robot gazebo.launch.py
 ```
 
-> If your launch file is named differently, replace `sim_launch.py` with the correct file name.
+> If your launch file is named differently, replace `gazebo.launch.py` with the correct file name.
 
 ### 2. Start SLAM and RViz
 
 In a second terminal, launch the SLAM toolbox and RViz:
 
 ```bash
-ros2 launch diff_robot slam_launch.py
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
 ```
 
 ### 3. Run Obstacle Avoidance
@@ -107,7 +107,7 @@ The robot will begin moving autonomously, using its LiDAR data to avoid obstacle
 If RViz does not open automatically, start it manually:
 
 ```bash
-rviz2
+ros2 run rviz2 rviz2
 ```
 
 - Click **Add** -> select **Map** -> click **OK**.
