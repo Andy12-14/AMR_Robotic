@@ -1,0 +1,61 @@
+2026-03-20T17:46:07.826Z INFO Is remote: false
+2026-03-20T17:46:07.845Z INFO Starting Local. Installation path: c:\Users\andys\Downloads\lab5_automation\lab5_automation
+2026-03-20T17:46:07.865Z INFO [MainProvider] Creating new MainProvider instance...
+2026-03-20T17:46:07.885Z INFO [TabsManager] Code view listener set up at initialization
+2026-03-20T17:46:07.908Z INFO Installation path exists: c:\Users\andys\Downloads\lab5_automation\lab5_automation
+2026-03-20T17:46:07.929Z INFO Initializing database with URL: file:c:\Users\andys\Downloads\lab5_automation\lab5_automation\pythagora-core\data\database\pythagora.db
+2026-03-20T17:46:07.957Z INFO Database file exists, skipping prisma generate/push for faster startup
+2026-03-20T17:46:07.979Z INFO Database initialized successfully
+2026-03-20T17:46:08.004Z INFO [Migration] Checking for database migration...
+2026-03-20T17:46:08.792Z INFO [Migration] No migration needed
+2026-03-20T17:48:30.541Z INFO [TabsManager] First file opened, triggering split view
+2026-03-20T17:48:30.559Z INFO [MainProvider] First file opened, creating split view
+2026-03-20T17:48:33.237Z INFO [TabsManager] First file opened, triggering split view
+2026-03-20T17:48:33.257Z INFO [MainProvider] First file opened, creating split view
+2026-03-20T17:48:40.434Z INFO [TabsManager] First file opened, triggering split view
+2026-03-20T17:48:40.454Z INFO [MainProvider] First file opened, creating split view
+2026-03-20T17:52:38.622Z INFO [TabsManager] First file opened, triggering split view
+2026-03-20T17:52:38.642Z INFO [MainProvider] First file opened, creating split view
+2026-03-20T17:52:46.193Z INFO [TabsManager] First file opened, triggering split view
+2026-03-20T17:52:46.217Z INFO [MainProvider] First file opened, creating split view
+2026-03-20T17:56:43.025Z INFO [TabsManager] First file opened, triggering split view
+2026-03-20T17:56:43.048Z INFO [MainProvider] First file opened, creating split view
+2026-03-20T17:56:46.003Z INFO [TabsManager] First file opened, triggering split view
+2026-03-20T17:56:46.026Z INFO [MainProvider] First file opened, creating split view
+2026-03-20T17:56:48.926Z INFO [TabsManager] First file opened, triggering split view
+2026-03-20T17:56:48.947Z INFO [MainProvider] First file opened, creating split view
+2026-03-23T09:55:17.996Z INFO Is remote: false
+2026-03-23T09:55:18.004Z INFO Starting Local. Installation path: c:\Users\andys\Downloads\lab5_automation\lab5_automation
+2026-03-23T09:55:18.010Z INFO [MainProvider] Creating new MainProvider instance...
+2026-03-23T09:55:18.018Z INFO [TabsManager] Code view listener set up at initialization
+2026-03-23T09:55:18.025Z INFO Installation path exists: c:\Users\andys\Downloads\lab5_automation\lab5_automation
+2026-03-23T09:55:18.032Z INFO Initializing database with URL: file:c:\Users\andys\Downloads\lab5_automation\lab5_automation\pythagora-core\data\database\pythagora.db
+2026-03-23T09:55:18.043Z INFO Database file exists, skipping prisma generate/push for faster startup
+2026-03-23T09:55:18.049Z INFO Database initialized successfully
+2026-03-23T09:55:18.055Z INFO [Migration] Checking for database migration...
+2026-03-23T09:55:18.590Z INFO [Migration] No migration needed
+2026-03-23T11:59:25.177Z INFO Closing entire Pythagora extension...
+2026-03-23T11:59:25.211Z ERROR Error closing extension
+Error: Canceled
+Stack: Canceled: Canceled
+	at new bI (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:148227)
+	at r._remoteCall (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:154279)
+	at i.<computed>.s.charCodeAt.i.<computed> (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:151074)
+	at dg._doExecuteCommand (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:494:48120)
+	at dg.executeCommand (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:494:47567)
+	at Object.executeCommand (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:618:135323)
+	at closeEntirePythagoraExtension (c:\Users\andys\.vscode\extensions\pythagoratechnologies.pythagora-vs-code-2.6.19\out\extension.js:542:31)
+	at Object.deactivate (c:\Users\andys\.vscode\extensions\pythagoratechnologies.pythagora-vs-code-2.6.19\out\extension.js:409:15)
+	at hk._deactivate (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:498:14479)
+	at file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:498:12006
+	at Array.map (<anonymous>)
+	at hk._deactivateAll (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:498:11994)
+	at hk.terminate (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:498:12345)
+	at r.terminate (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:500:1072)
+	at Us (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:810:11700)
+	at MessagePortMain.<anonymous> (file:///c:/Users/andys/AppData/Local/Programs/Microsoft%20VS%20Code/07ff9d6178/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:810:8122)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+Extra context: {
+  "message": "Canceled"
+}
