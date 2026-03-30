@@ -1,37 +1,33 @@
-Autonomous Exploration and Mapping with ROS 2
+# Autonomous Exploration and Mapping with ROS 2
 
 A complete simulation pipeline demonstrating a custom differential drive robot capable of autonomous navigation, reactive obstacle avoidance, and real-time environment mapping (SLAM) using ROS 2 and Gazebo Harmonic.
 
+## Features
 
+- **Custom URDF:** A differential drive robot equipped with a 360° LiDAR and a front-facing camera.
+- **Autonomous Navigation:** Custom Python node utilizing laser scan data to dynamically filter noise (NaN/Inf) and avoid obstacles in real-time.
+- **SLAM Integration:** Real-time 2D occupancy grid generation using `slam_toolbox`.
+- **High-Fidelity Simulation:** Built for Gazebo Harmonic with `ros_gz` bridges.
 
-Features
+## Installation Guide (Windows / WSL)
 
-Custom URDF: A differential drive robot equipped with a 360° LiDAR and a front-facing camera.
+This project is built to run on **Ubuntu 24.04** using **ROS 2 Jazzy**. If you are on Windows, use **Windows Subsystem for Linux (WSL)**.
 
-Autonomous Navigation: Custom Python node utilizing laser scan data to dynamically filter noise (NaN/Inf) and avoid obstacles in real-time.
+### Step 1: Install WSL and Ubuntu 24.04
 
-SLAM Integration: Real-time 2D occupancy grid generation using the slam_toolbox.
+Open Windows PowerShell as Administrator and run:
 
-High-Fidelity Simulation: Built for Gazebo Harmonic with ros_gz bridges.
-
-Installation Guide (Windows / WSL)
-
-This project is built to run on Ubuntu 24.04 using ROS 2 Jazzy. If you are on Windows, you will need to set up Windows Subsystem for Linux (WSL).
-
-Step 1: Install WSL and Ubuntu 24.04
-
-Open your Windows PowerShell as Administrator and run:
-
+```powershell
 wsl --install -d Ubuntu-24.04
+```
 
+Restart your computer if prompted. After rebooting, open the **Ubuntu 24.04** app and create your UNIX username and password.
 
+### Step 2: Install ROS 2 Jazzy
 
-Restart your computer if prompted. Once rebooted, open the "Ubuntu 24.04" app from your Windows Start menu and create your UNIX username and password.
+Inside your Ubuntu terminal, install ROS 2 Jazzy:
 
-Step 2: Install ROS 2 Jazzy
-
-Inside your Ubuntu terminal, install ROS 2 Jazzy by following the official setup:
-
+```bash
 sudo apt update && sudo apt install locales
 sudo locale-gen en_US en_US.UTF-8
 sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
@@ -41,116 +37,110 @@ sudo apt install software-properties-common
 sudo add-apt-repository universe
 
 sudo apt update && sudo apt install curl -y
-sudo curl -sSL [https://raw.githubusercontent.com/ros/rosdistro/master/ros.key](https://raw.githubusercontent.com/ros/rosdistro/master/ros.key) -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] [http://packages.ros.org/ros2/ubuntu](http://packages.ros.org/ros2/ubuntu) $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" > /etc/apt/sources.list.d/ros2.list'
 
 sudo apt update
 sudo apt install ros-jazzy-desktop ros-jazzy-ros-gz
+```
 
+### Step 3: Set Up the Workspace
 
+Create a standard ROS 2 workspace and clone the repository into the `src` directory.
 
-Step 3: Set Up the Workspace
-
-We will create a standard ROS 2 workspace and clone the repository into the src directory.
-
-# 1. Source your ROS 2 installation
+```bash
 source /opt/ros/jazzy/setup.bash
-
-# 2. Create the workspace and src folder
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
 
-# 3. Clone this repository
-git clone [https://github.com/Andy12-14/AMR_Robotic.git](https://github.com/Andy12-14/AMR_Robotic.git)
+git clone https://github.com/Andy12-14/AMR_Robotic.git
 
-# 4. Navigate back to the workspace root
 cd ~/ros2_ws
-
-# 5. Install any missing dependencies using rosdep
 sudo rosdep init
 rosdep update
 rosdep install --from-paths src -y --ignore-src
-
-# 6. Build the workspace using colcon
 colcon build --symlink-install
+```
 
+> Pro Tip: Add `source ~/ros2_ws/install/setup.bash` to your `~/.bashrc` so you do not need to source it in every new terminal.
 
+## How to Run the Project
 
-Pro Tip: Add source ~/ros2_ws/install/setup.bash to your ~/.bashrc file so you don't have to source it every time you open a new terminal.
+Open three separate terminal windows. In each terminal, source the workspace:
 
-How to Run the Project
-
-You will need to open three separate terminal windows. Make sure to source your workspace in every new terminal:
+```bash
 source ~/ros2_ws/install/setup.bash
+```
 
-1. Launch the Simulation (Gazebo)
+### 1. Launch the Simulation (Gazebo)
 
-First, spawn the custom differential drive robot inside the simulated maze environment.
+Spawn the custom differential drive robot inside the simulated maze environment:
 
+```bash
 ros2 launch diff_robot sim_launch.py
+```
 
+> If your launch file is named differently, replace `sim_launch.py` with the correct file name.
 
+### 2. Start SLAM and RViz
 
-(Note: If your launch file is named differently, replace sim_launch.py with the correct name).
+In a second terminal, launch the SLAM toolbox and RViz:
 
-2. Start SLAM and RViz
-
-In a second terminal, launch the SLAM toolbox and RViz to begin the mapping process.
-
+```bash
 ros2 launch diff_robot slam_launch.py
+```
 
+### 3. Run Obstacle Avoidance
 
+In a third terminal, start the custom Python node:
 
-3. Unleash the "Brain" (Obstacle Avoidance)
-
-In a third terminal, run the custom Python node. The robot will start moving, using its LiDAR to evade walls and dynamically explore the maze.
-
+```bash
 ros2 run diff_robot obstacle_avoidance
+```
 
+The robot will begin moving autonomously, using its LiDAR data to avoid obstacles and explore the maze.
 
+## Visualizing the Robot's Sensors
 
-Visualizing the Robot's Sensors
+### Viewing the SLAM Map (RViz)
 
-Once the robot is running autonomously, you can view what it sees in real-time.
+If RViz does not open automatically, start it manually:
 
-Viewing the SLAM Map (RViz)
+```bash
+rviz2
+```
 
-If RViz does not open automatically with your SLAM launch file, you can start it manually and add the map:
+- Click **Add** -> select **Map** -> click **OK**.
+- Under the Map dropdown, set **Topic** to `/map`.
+- Set the **Fixed Frame** to `map` or `odom`.
 
-Open a new terminal and run: rviz2
+You will see the occupancy grid update in real-time.
 
-In the bottom left, click Add -> select Map -> click OK.
+### Viewing the Camera Feed (RQT)
 
-In the left panel under the new Map dropdown, find Topic and change it to /map.
+To view the live RGB video feed from the front-facing camera:
 
-Ensure your Fixed Frame (at the top left) is set to map or odom. You will see the black, white, and grey occupancy grid drawing in real-time!
-
-Viewing the Camera Feed (RQT)
-
-To see the live RGB video feed from the front-facing camera, we use the standard ROS 2 image viewer:
-
-Open a new terminal and source your ROS 2 installation.
-
-Run the image view tool:
-
+```bash
 ros2 run rqt_image_view rqt_image_view
+```
 
+Then select the camera topic (typically `/camera/image_raw`) from the dropdown menu.
 
+## How the Code Works
 
-A window will pop up. In the dropdown menu at the top left, select the camera topic (typically /camera/image_raw). You will now see the live video stream from Gazebo!
+The core logic resides in the `obstacle_avoidance` Python node:
 
-How the Code Works
+- **Sense:** Subscribes to the `/scan` topic to receive 360-degree LiDAR data.
+- **Filter:** Uses the front 80 degrees of laser data and filters out `NaN` and `Inf` anomalies caused by sensor noise.
+- **Act:** Monitors a 0.8-meter safety threshold. If an object enters that zone, the node overrides the forward command and executes a rotation escape maneuver.
 
-The core logic lies in the obstacle_avoidance Python node:
+## Contributing
 
-Sense: Subscribes to the /scan topic to receive 360-degree LiDAR data.
+Feel free to fork this project, submit pull requests, or use it as a base for your own ROS 2 robotics projects.
 
-Filter: Slices the front 80 degrees for "tunnel vision" and mathematically filters out NaN and Inf anomalies caused by sensor scattering.
+Future goals include:
 
-Act: Continuously monitors a 0.8-meter safety threshold. If an object breaches this zone, it overrides the forward command (1.2 m/s) with a sharp rotational escape velocity.
-
-Contributing
-
-Feel free to fork this project, submit pull requests, or use it as a base for your own ROS 2 robotics projects! Future goals include implementing the Nav2 stack for directed pathfinding and utilizing the onboard camera for object recognition.
+- Implementing the Nav2 stack for directed pathfinding.
+- Utilizing the onboard camera for object recognition.
 
 Created for autonomous robotics demonstration and educational purposes.
